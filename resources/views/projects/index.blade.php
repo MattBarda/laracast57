@@ -11,4 +11,5 @@
             </li>
         @endforeach
     </ul>
+    <a class="button" href="/projects/create">Creeate a project</a>
 @endsection

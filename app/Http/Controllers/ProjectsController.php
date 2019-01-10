@@ -30,6 +30,8 @@ class ProjectsController extends Controller
             'title' => ['required', 'min:3'],
             'description' => ['required', 'min:3'],
         ]);
+        // request('title') - other way of accessing request attributes
+        // request(['title', 'description']); - mass accessing request attributes
 
         Project::create($attributes);
 
