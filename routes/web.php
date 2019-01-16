@@ -37,9 +37,9 @@
 //});
 
     //dump service registered in SocialServiceProvider
-//Route::get('/', function(\App\Services\Twitter $twitter){
-//   dd($twitter);
-//});
+Route::get('/', function(\App\Services\Twitter $twitter){
+   dd($twitter);
+});
 
     //dump service that is registered to resolve Interfaces
 //Route::get('/', function(\App\Repositories\DbUserRepository $repository){
