@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-class UserRepository
+interface UserRepository
 {
-
+    public function create($attributes);
 }
