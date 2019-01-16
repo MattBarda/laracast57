@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <h1>Projects list</h1>
+    <h1 class="title">Projects list</h1>
     <ul>
         @foreach($projects as $project)
             <li>
