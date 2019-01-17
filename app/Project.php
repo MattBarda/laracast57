@@ -14,7 +14,8 @@ class Project extends Model
      */
     protected $fillable = [
         'title',
-        'description'
+        'description',
+        'owner_id'
     ];
 
     public function tasks()

@@ -36,21 +36,20 @@
 //    return view('welcome');
 //});
 
-    //dump service registered in SocialServiceProvider
-Route::get('/', function(\App\Services\Twitter $twitter){
-   dd($twitter);
-});
-
     //dump service that is registered to resolve Interfaces
 //Route::get('/', function(\App\Repositories\DbUserRepository $repository){
 //   dd($repository);
 //});
 
-//Route::get('/', 'PagesController@home');
-Route::get('/about', 'PagesController@about');
-Route::get('/contact', 'PagesController@contact');
+Route::get('/', function(\App\Services\Twitter $twitter){
+    return view('welcome');
+});
 
 Route::resource('projects', 'ProjectsController');
 Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
 Route::post('/completed-tasks/{task}', 'CompletedTasksController@store');
 Route::delete('/completed-tasks/{task}', 'CompletedTasksController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

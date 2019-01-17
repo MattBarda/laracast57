@@ -8,9 +8,18 @@ use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $projects = Project::all();
+        auth()->id();// 1
+        auth()->user();// User
+        auth()->check();//bool
+        auth()->guest();//bool
+        $projects = Project::where('owner_id', auth()->id())->get();
 
         return view('projects.index', compact('projects'));
     }
@@ -35,7 +44,7 @@ class ProjectsController extends Controller
         ]);
         // request('title') - other way of accessing request attributes
         // request(['title', 'description']); - mass accessing request attributes
-
+        $attributes['owner_id'] = auth()->id();
         Project::create($attributes);
 
         return redirect('/projects');
