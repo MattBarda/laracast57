@@ -5,20 +5,22 @@ namespace App\Http\Controllers;
 use App\Project;
 use App\Services\Twitter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectsController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+//        $this->middleware('auth')->only(['show']); apply only to show route
     }
 
     public function index()
     {
-        auth()->id();// 1
-        auth()->user();// User
-        auth()->check();//bool
-        auth()->guest();//bool
+        Auth::id();// 1
+        Auth::user();// User
+        Auth::check();//bool
+        Auth::guest();//bool
         $projects = Project::where('owner_id', auth()->id())->get();
 
         return view('projects.index', compact('projects'));
